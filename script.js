@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const fakePoster = document.getElementById('fake-poster');
     const liveIframe = document.getElementById('live-iframe');
 
-    // Lógica para el reproductor fijo de la portada principal
     if(fakePoster && liveIframe && !window.location.search) { 
         fakePoster.addEventListener('click', function() {
             fakePoster.style.display = 'none';
