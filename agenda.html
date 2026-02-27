@@ -2,127 +2,53 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="referrer" content="no-referrer">
-    <title>Agenda Deportiva | ARNOLDSPORTS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <title>Agenda en Vivo | ARNOLDSPORTS</title>
+    <link rel="icon" href="mi_logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body style="background-color: #001224;">
+<body>
 
-<header style="background: rgba(0, 51, 102, 0.95); border-bottom: 2px solid #5CBFEB; padding: 15px 0;">
-    <div class="container mx-auto px-4 flex justify-between items-center">
-        <a href="index.html" class="logo" style="color: white; font-family: 'Oswald'; font-size: 1.5rem; text-decoration: none;">
-            <i class="fa-solid fa-arrow-left"></i> VOLVER
-        </a>
-        <span style="color: #5CBFEB; font-weight: bold;"><i class="fa-solid fa-satellite-dish"></i> EN VIVO</span>
-    </div>
-</header>
-
-<div class="main sm:pl-20 sm:pr-20 md:pl-30 md:pl-30 mt-8">
-
-    <div class="m-6 cardsection">
-        <div class="header-title">
-            <h3 class="item-game" style="color: #FFD700; font-family: 'Oswald';">EVENTOS</h3>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="mt-1 mb-1">
-                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20 bg-black/40 rounded-lg">
-                    <div class="px-4"><span class="status-indicator inlive"></span><span class="text-inlive">Activo</span></div>
-                    <div class="text-center text-white font-bold">AGENDA DEPORTIVA</div>
-                    <div class="flex justify-end mr-5">
-                        <a href="reproductor.html?url=https://la12hd.com/eventos/" target="_self" class="bg-blue-900 text-white p-2 rounded-lg w-20 text-center hover:bg-blue-500 transition">Enlace</a>
-                    </div>
-                </div>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo" style="cursor: pointer;">
+                <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Volver
+            </a>
+            <div class="live-badge" style="background: rgba(92, 191, 235, 0.2); border-color: var(--sc-celeste); color: var(--sc-celeste); box-shadow: none;">
+                <i class="fa-solid fa-satellite-dish"></i> AGENDA EN VIVO
             </div>
         </div>
-    </div>
+    </header>
 
-    <div class="m-6 cardsection">
-        <div class="header-title"><h3 class="item-game" style="color: #FFD700; font-family: 'Oswald';">LATINOAMÉRICA</h3></div>
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="mt-1 mb-1">
-                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20 bg-black/40 rounded-lg">
-                    <div class="px-4"><span class="status-indicator inlive"></span><span class="text-inlive">Activo</span></div>
-                    <div class="text-center text-white font-bold">ESPN</div>
-                    <div class="flex justify-end mr-5">
-                        <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn" target="_self" class="bg-blue-900 text-white p-2 rounded-lg w-20 text-center hover:bg-blue-500 transition">Enlace</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-1 mb-1">
-                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20 bg-black/40 rounded-lg">
-                    <div class="px-4"><span class="status-indicator inlive"></span><span class="text-inlive">Activo</span></div>
-                    <div class="text-center text-white font-bold">ESPN 2</div>
-                    <div class="flex justify-end mr-5">
-                        <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn2" target="_self" class="bg-blue-900 text-white p-2 rounded-lg w-20 text-center hover:bg-blue-500 transition">Enlace</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-1 mb-1">
-                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20 bg-black/40 rounded-lg">
-                    <div class="px-4"><span class="status-indicator inlive"></span><span class="text-inlive">Activo</span></div>
-                    <div class="text-center text-white font-bold">ESPN 3</div>
-                    <div class="flex justify-end mr-5">
-                        <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn3" target="_self" class="bg-blue-900 text-white p-2 rounded-lg w-20 text-center hover:bg-blue-500 transition">Enlace</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-1 mb-1">
-                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20 bg-black/40 rounded-lg">
-                    <div class="px-4"><span class="status-indicator inlive"></span><span class="text-inlive">Activo</span></div>
-                    <div class="text-center text-white font-bold">DSports</div>
-                    <div class="flex justify-end mr-5">
-                        <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dsports" target="_self" class="bg-blue-900 text-white p-2 rounded-lg w-20 text-center hover:bg-blue-500 transition">Enlace</a>
-                    </div>
-                </div>
-            </div>
+    <main class="container" style="padding-top: 40px; padding-bottom: 50px;">
+        
+        <div class="plantilla-header" style="margin-bottom: 20px;">
+            <h2>🔥 Partidos de Hoy</h2>
+            <p style="color: var(--text-dim);">Selecciona el partido para abrirlo en tu reproductor.</p>
         </div>
-    </div>
+        
+        <div id="partidos-de-hoy" style="margin-bottom: 50px;"></div>
 
-    <div class="m-6 cardsection">
-        <div class="header-title"><h3 class="item-game" style="color: #FFD700; font-family: 'Oswald';">ARGENTINA</h3></div>
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="mt-1 mb-1">
-                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20 bg-black/40 rounded-lg">
-                    <div class="px-4"><span class="status-indicator inlive"></span><span class="text-inlive">Activo</span></div>
-                    <div class="text-center text-white font-bold">TNT Sports</div>
-                    <div class="flex justify-end mr-5">
-                        <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=tntsports" target="_self" class="bg-blue-900 text-white p-2 rounded-lg w-20 text-center hover:bg-blue-500 transition">Enlace</a>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-1 mb-1">
-                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20 bg-black/40 rounded-lg">
-                    <div class="px-4"><span class="status-indicator inlive"></span><span class="text-inlive">Activo</span></div>
-                    <div class="text-center text-white font-bold">ESPN Premium</div>
-                    <div class="flex justify-end mr-5">
-                        <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espnpremium" target="_self" class="bg-blue-900 text-white p-2 rounded-lg w-20 text-center hover:bg-blue-500 transition">Enlace</a>
-                    </div>
-                </div>
-            </div>
+        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 40px;">
+
+        <div class="plantilla-header" style="margin-bottom: 20px;">
+            <h2>Directorio de Canales</h2>
+            <p style="color: var(--text-dim);">Transmisiones 24/7 ininterrumpidas.</p>
         </div>
-    </div>
 
-    <div class="m-6 cardsection">
-        <div class="header-title"><h3 class="item-game" style="color: #FFD700; font-family: 'Oswald';">PERÚ</h3></div>
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="mt-1 mb-1">
-                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20 bg-black/40 rounded-lg">
-                    <div class="px-4"><span class="status-indicator inlive"></span><span class="text-inlive">Activo</span></div>
-                    <div class="text-center text-white font-bold">Liga1 MAX</div>
-                    <div class="flex justify-end mr-5">
-                        <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=liga1max" target="_self" class="bg-blue-900 text-white p-2 rounded-lg w-20 text-center hover:bg-blue-500 transition">Enlace</a>
-                    </div>
-                </div>
-            </div>
+        <div id="directorio-canales"></div>
+        
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-logo">© 2026 ARNOLDSPORTS</div>
         </div>
-    </div>
+    </footer>
 
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
