@@ -4,13 +4,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const fakePoster = document.getElementById('fake-poster');
     const liveIframe = document.getElementById('live-iframe');
+    const clickShield = document.getElementById('click-shield'); // Agregamos el escudo
 
     if(fakePoster && liveIframe && !window.location.search) { 
         fakePoster.addEventListener('click', function() {
             fakePoster.style.display = 'none';
-            // ESTE ES TU LINK ORIGINAL QUE SÍ FUNCIONA
+            if(clickShield) clickShield.style.display = 'block'; // Prende el escudo
             liveIframe.src = "https://la14hd.com/vivo/canales.php?stream=liga1max";
-            liveIframe.style.display = 'block';
         });
     }
 });
@@ -310,3 +310,4 @@ function showToast(message) {
         setTimeout(() => toast.classList.remove('show'), 3000);
     }
 }
+
