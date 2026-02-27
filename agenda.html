@@ -2,55 +2,2769 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="referrer" content="no-referrer">
-    <title>Agenda en Vivo | ARNOLDSPORTS</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Canales | ARNOLDSPORTS</title>
     <link rel="icon" href="mi_logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body { background-color: #001224; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
+        .status-indicator { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
+        .inlive { background-color: #22c55e; box-shadow: 0 0 8px #22c55e; }
+        .offline { background-color: #ef4444; }
+        .text-inlive { color: #22c55e; font-weight: bold; }
+        .text-offline { color: #ef4444; font-weight: bold; }
+        .btn-red { background-color: #003366; border: 1px solid #5CBFEB; transition: 0.3s; display: flex; align-items: center; justify-content: center;}
+        .btn-red:hover { background-color: #5CBFEB; color: #003366; font-weight: bold; }
+        .canal { background-color: rgba(0,0,0,0.4); border-left: 3px solid #5CBFEB; border-radius: 8px; transition: 0.3s; }
+        .canal:hover { background-color: rgba(0,0,0,0.6); transform: scale(1.02); cursor: pointer; border-color: #fff;}
+        .cardsection { background: rgba(0, 51, 102, 0.6); border-radius: 15px; border: 1px solid rgba(92, 191, 235, 0.3); padding-bottom: 20px; }
+        .header-title { padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 15px; }
+        .item-game { font-family: 'Oswald', sans-serif; color: #FFD700; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px;}
+    </style>
 </head>
-<body>
+<body class="text-white">
 
-    <header>
-        <div class="container header-content">
-            <a href="index.html" class="logo" style="cursor: pointer;">
-                <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Volver
+    <header style="background: rgba(0, 51, 102, 0.95); backdrop-filter: blur(10px); border-bottom: 2px solid #5CBFEB; position: sticky; top: 0; z-index: 1000; padding: 15px 0;">
+        <div class="container mx-auto px-4 flex justify-between items-center max-w-[1200px]">
+            <a href="index.html" style="font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-arrow-left" style="color: #5CBFEB;"></i> Volver
             </a>
-            <div class="live-badge" style="background: rgba(92, 191, 235, 0.2); border-color: var(--sc-celeste); color: var(--sc-celeste); box-shadow: none;">
+            <div style="background: rgba(92, 191, 235, 0.2); border: 1px solid #5CBFEB; color: #5CBFEB; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">
                 <i class="fa-solid fa-satellite-dish"></i> AGENDA EN VIVO
             </div>
         </div>
     </header>
 
-    <main class="container" style="padding-top: 40px; padding-bottom: 50px;">
-        
-        <div class="plantilla-header" style="margin-bottom: 20px;">
-            <h2>🔥 Partidos de Hoy</h2>
-            <p style="color: var(--text-dim);">Selecciona el partido para abrirlo en tu reproductor.</p>
+    <div class="main sm:pl-20 sm:pr-20 md:pl-30 md:pl-30 max-w-[1200px] mx-auto mt-8 mb-20">
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">EVENTOS</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div class="mt-1 mb-1">
+                    <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                        <div class="max-w-sm rounded overflow-hidden">
+                            <div class="px-2 sm:px-4">
+                                <span class="status-indicator inlive"></span>
+                                <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                            </div>
+                        </div>
+
+                        <div class="max-w-sm rounded overflow-hidden text-center">
+                            <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">AGENDA DEPORTIVA</font></font></div>
+                        </div>
+
+                        <div class="flex justify-end mr-1 sm:mr-10">
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                                <a href="reproductor.html?url=https://la12hd.com/eventos/" target="_self" class="text-center" rel="noopener noreferrer">
+                                    <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                        <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div id="partidos-de-hoy" style="margin-bottom: 50px;"></div>
 
-        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 40px;">
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">LATINOAMÉRICA</font></font></h3>
+            </div>
 
-        <div class="plantilla-header" style="margin-bottom: 20px;">
-            <h2>Directorio de Canales</h2>
-            <p style="color: var(--text-dim);">Transmisiones 24/7 ininterrumpidas.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="ESPN">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn3" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 4">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 4</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn4" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 5">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 5</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn5" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 6">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 6</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn6" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 7">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 7</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn7" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DSports">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DSports</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dsports" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DSports 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DSports 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dsports2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DSports Plus">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DSports Plus</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dsportsplus" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="GOLTV">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">GOLTV</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=goltv" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="VTV Plus">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">VTV Plus</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=vtvplus" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ECDF LigaPro (eventos)">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ECDF LigaPro (eventos)</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=ecdf_ligapro" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ARGENTINA</font></font></h3>
+            </div>
 
-        <div id="directorio-canales"></div>
-        
-    </main>
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="Fox Sports">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
 
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-logo">© 2026 ARNOLDSPORTS</div>
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Deportes Fox</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsports" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Fox Sports 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Fox Sports 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsports2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Fox Sports 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Fox Sports 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsports3" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="TNT Sports">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Deportes TNT</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=tntsports" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN Premium">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN Premium</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espnpremium" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="TyC Sports">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">TyC Deportes</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=tycsports" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="TyC Sports Internacional (USA)">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">TyC Sports Internacional (Estados Unidos)</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=tycinternacional" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Telefe">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Telefe</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=telefe" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="TV Pública">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">TV Pública</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=tvpublica" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
         </div>
-    </footer>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">PERÚ</font></font></h3>
+            </div>
 
-    <script src="script.js"></script>
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="GOLPERU">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">GOLPERÚ</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=golperu" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Liga1 MAX">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Liga1 MAX</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=liga1max" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Movistar Deportes">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Movistar Deportes</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=movistar" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">COLOMBIA</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="Win Sports Plus">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Win Sports Plus</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=winsportsplus" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Win Sports plus (2)">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Gana Deportes plus (2)</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=winsports2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Win Sports">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Ganar deportes</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=winsports" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">MÉXICO</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="Fox Sports">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Deportes Fox</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsportsmx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Fox Sports 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Fox Sports 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsports2mx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Fox Sports 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Fox Sports 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsports3mx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Fox Sports Premium">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Fox Sports Premium</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsportspremium" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="TUDN">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">TUDN</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=tudn_mx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espnmx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn2mx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn3mx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 4">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 4</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn4mx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Caliente TV">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Caliente TV</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=calientetv" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Azteca 7">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Azteca 7</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=azteca7" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Canal 5">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Canal 5</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=canal5" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="TVC Deportes">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">TVC Deportes</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=tvc_deportes" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Azteca Deportes">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Azteca Deportes</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=azteca_deportes" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Hisports">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Hisports</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=hisports" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sky Sports LaLiga">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sky Sports LaLiga</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sky_sports_laliga" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sky Sports Bundesliga">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Bundesliga de Sky Sports</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sky_bundesliga_mx" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">EE.UU</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="Fox Deportes">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Fox Deportes</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxdeportes" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN Deportes">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN Deportes</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espndeportes" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="TUDN">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">TUDN</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=tudn" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Univisión">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Univisión</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=univision" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Fox Sports 1">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Fox Sports 1</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsports1_usa" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Fox Sports 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Fox Sports 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=foxsports2_usa" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Universo">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Universo</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=universo" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="BeIN Sports Español">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">BeIN Sports Español</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=beinsportes" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Unimás">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Unimás</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=unimas" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="BeIN Sports Xtra Español">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">BeIN Sports Xtra Español</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=beinsport_xtra_espanol" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline" style=""><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn_usa" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn2_usa" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN U">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN U</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espnu" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="CBS Sports Network">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Red deportiva CBS</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=cbs_sports_network" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="USAnetwork">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Red de EE. UU.</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=usanetwork" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Telemundo">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Telemundo</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=telemundo" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">CHILE</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="TNT Sports Chile">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">TNT Deportes Chile</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=eventos13" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">BRASIL</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="Premiere 1">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Estreno 1</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=premiere1" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Premiere 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Estreno 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=premiere2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Premiere 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Estreno 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=premiere3" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Premiere 4">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Estreno 4</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=premiere4" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Premiere 5">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Estreno 5</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=premiere5" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Premiere 6">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Estreno 6</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=premiere6" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Premiere 7">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Estreno 7</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=premiere7" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Premiere 8">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Estreno 8</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=premiere8" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sportv">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Deportes</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sportv" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sportv 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sportv 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sportv2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sportv 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sportv 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sportv3" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">PORTUGAL</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="Sport TV 1">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Televisión deportiva 1</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sporttv1" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sport TV 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Televisión deportiva 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sporttv2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sport TV 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sport TV 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sporttv3" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sport TV 4">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sport TV 4</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sporttv4" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sport TV 5">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sport TV 5</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sporttv5" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sport TV 6">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive" style="">Activo</span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sport TV 6</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sporttv6" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Canal 11">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Canal 11</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=canal11_pt" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Dazn Eleven 1">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Dazn Once 1</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=eleven1_pt" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Dazn Eleven 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Dazn Once 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=eleven2_pt" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Dazn Eleven 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Dazn Once 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=eleven3_pt" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Dazn Eleven 4">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Dazn Once 4</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=eleven4_pt" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Dazn Eleven 5">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Dazn Once 5</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=eleven5_pt" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Dazn Eleven 6">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Dazn Once 6</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=eleven6_pt" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPAÑA</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="DAZN 1">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DAZN 1</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dazn1" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DAZN 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DAZN 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dazn2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DAZN 3 (eventos)">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DAZN 3 (eventos)</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dazn3" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DAZN 4 (eventos)">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DAZN 4 (eventos)</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dazn4" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DAZN LaLiga">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DAZN LaLiga</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dazn_laliga" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="La 1 TVE">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">La 1 de TVE</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=la1tve" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Liga de Campeones 1">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Liga de Campeones 1</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=ligadecampeones1" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Liga de Campeones 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Liga de Campeones 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=ligadecampeones2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Liga de Campeones 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Liga de Campeones 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=ligadecampeones3" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="M+ LaLiga TV">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">M+ LaLiga TV</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=m_laligatv" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="LaLigaTV BAR">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">LaLigaTV BAR</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=laligatvbar" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="m-6 cardsection">
+            <div class="header-title">
+                <h3 class="item-game"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">MUNDO</font></font></h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                
+            <div class="mt-1 mb-1" data-canal="Sky Bundesliga 1">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sky Bundesliga 1</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sky_bundesliga1" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sky Bundesliga 2">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sky Bundesliga 2</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sky_bundesliga2" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sky Bundesliga 3">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sky Bundesliga 3</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sky_bundesliga3" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sky Bundesliga 4">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sky Bundesliga 4</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sky_bundesliga4" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Sky Bundesliga 5">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Sky Bundesliga 5</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=sky_bundesliga5" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DAZN 1 DE">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DAZN 1 DE</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dazn1_de" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="DAZN 2 DE">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">DAZN 2 DE</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=dazn2_de" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 1 NL">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 1 NL</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn1_nl" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 2 NL">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 2 NL</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn2_nl" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="ESPN 3 NL">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator inlive"></span>
+                            <span class="inline-block text-md font-semibold status-text text-inlive"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Activo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">ESPN 3 NL</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=espn3_nl" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-1 mb-1" data-canal="Dazn Eleven Pro 1 BE">
+                <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20">
+                    <div class="max-w-sm rounded overflow-hidden">
+                        <div class="px-2 sm:px-4">
+                            <span class="status-indicator offline"></span>
+                            <span class="inline-block text-md font-semibold status-text text-offline"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Inactivo</font></font></span>
+                        </div>
+                    </div>
+
+                    <div class="max-w-sm rounded overflow-hidden text-center">
+                        <div class="font-bold text-md text-white"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Dazn Eleven Pro 1 BE</font></font></div>
+                    </div>
+
+                    <div class="flex justify-end mr-1 sm:mr-10">
+                        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                            <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=elevenpro1_be" target="_self" class="text-center">
+                                <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 btn-red">
+                                    <p><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">Enlace</font></font></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
