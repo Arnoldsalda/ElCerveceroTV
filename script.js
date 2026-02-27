@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if(fakePoster && liveIframe && !window.location.search) { 
         fakePoster.addEventListener('click', function() {
             fakePoster.style.display = 'none';
+            // ESTE ES TU LINK ORIGINAL QUE SÍ FUNCIONA
             liveIframe.src = "https://la14hd.com/vivo/canales.php?stream=liga1max";
             liveIframe.style.display = 'block';
         });
@@ -57,7 +58,7 @@ function actualizarContador() {
 setInterval(actualizarContador, 1000);
 
 // ==========================================
-// 3. LA AGENDA DIARIA (Partidos de Hoy)
+// 3. LA AGENDA DIARIA
 // ==========================================
 const partidosDeHoy = [
     { hora: "14:00", torneo: "Liga Saudí", partido: "Al Shabab vs Al Hilal", link: "https://la14hd.com/vivo/canales.php?stream=foxdeportes" },
@@ -72,25 +73,17 @@ const partidosDeHoy = [
 ];
 
 // ==========================================
-// 4. BASE DE DATOS DE CANALES FIJOS (TODOS TUS CANALES NUEVOS)
+// 4. DIRECTORIO DE CANALES (CON TUS LINKS EXACTOS)
 // ==========================================
 const canalesDirectorio = [
     {
         region: "EVENTOS", icono: "fa-calendar-check",
         canales: [
-            { nombre: "Agenda Deportiva General", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la12hd.com/eventos/" }
+            { nombre: "AGENDA DEPORTIVA", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la12hd.com/eventos/" }
         ]
     },
     {
-        region: "PERÚ", icono: "fa-flag",
-        canales: [
-            { nombre: "Liga1 MAX", logo: "https://claroperupoc.vtexassets.com/arquivos/ids/1667923/liga-1-max.png", link: "https://la14hd.com/vivo/canales.php?stream=liga1max" },
-            { nombre: "GOLPERU", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Golperu_logo.png/512px-Golperu_logo.png", link: "https://la14hd.com/vivo/canales.php?stream=golperu" },
-            { nombre: "Movistar Deportes", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Movistar_Deportes_Peru_logo.png/512px-Movistar_Deportes_Peru_logo.png", link: "https://la14hd.com/vivo/canales.php?stream=movistar" }
-        ]
-    },
-    {
-        region: "LATINOAMERICA", icono: "fa-earth-americas",
+        region: "LATINOAMÉRICA", icono: "fa-earth-americas",
         canales: [
             { nombre: "ESPN", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn" },
             { nombre: "ESPN 2", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn2" },
@@ -116,28 +109,46 @@ const canalesDirectorio = [
             { nombre: "TNT Sports", logo: "https://logodownload.org/wp-content/uploads/2021/05/tnt-sports-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=tntsports" },
             { nombre: "ESPN Premium", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espnpremium" },
             { nombre: "TyC Sports", logo: "https://logodownload.org/wp-content/uploads/2019/10/tyc-sports-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=tycsports" },
+            { nombre: "TyC Sports Internacional", logo: "https://logodownload.org/wp-content/uploads/2019/10/tyc-sports-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=tycinternacional" },
             { nombre: "Telefe", logo: "https://logodownload.org/wp-content/uploads/2014/10/telefe-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=telefe" },
             { nombre: "TV Pública", logo: "https://logodownload.org/wp-content/uploads/2019/10/tv-publica-argentina-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=tvpublica" }
         ]
     },
     {
-        region: "MÉXICO", icono: "fa-pepper-hot",
+        region: "PERÚ", icono: "fa-flag",
         canales: [
-            { nombre: "TUDN", logo: "https://logodownload.org/wp-content/uploads/2019/10/tudn-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=tudn_mx" },
-            { nombre: "Fox Deportes", logo: "https://logodownload.org/wp-content/uploads/2014/10/fox-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=foxdeportes" },
-            { nombre: "Univisión", logo: "https://logodownload.org/wp-content/uploads/2014/10/univision-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=univision" },
-            { nombre: "Azteca 7", logo: "https://logodownload.org/wp-content/uploads/2019/10/tv-azteca-7-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=azteca7" },
-            { nombre: "Canal 5", logo: "https://logodownload.org/wp-content/uploads/2019/10/canal-5-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=canal5" }
+            { nombre: "Liga1 MAX", logo: "https://claroperupoc.vtexassets.com/arquivos/ids/1667923/liga-1-max.png", link: "https://la14hd.com/vivo/canales.php?stream=liga1max" },
+            { nombre: "GOLPERU", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Golperu_logo.png/512px-Golperu_logo.png", link: "https://la14hd.com/vivo/canales.php?stream=golperu" },
+            { nombre: "Movistar Deportes", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Movistar_Deportes_Peru_logo.png/512px-Movistar_Deportes_Peru_logo.png", link: "https://la14hd.com/vivo/canales.php?stream=movistar" }
         ]
     },
     {
-        region: "ESPAÑA & MUNDO", icono: "fa-globe",
+        region: "COLOMBIA", icono: "fa-mug-hot",
         canales: [
-            { nombre: "DAZN 1", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn1" },
-            { nombre: "DAZN LaLiga", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn_laliga" },
-            { nombre: "M+ LaLiga TV", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=m_laligatv" },
-            { nombre: "Sky Sports Bundesliga", logo: "https://logodownload.org/wp-content/uploads/2014/04/sky-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=sky_bundesliga1" },
-            { nombre: "ESPN 1 NL", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn1_nl" }
+            { nombre: "Win Sports Plus", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Win_Sports%2B.svg/512px-Win_Sports%2B.svg.png", link: "https://la14hd.com/vivo/canales.php?stream=winsportsplus" },
+            { nombre: "Win Sports", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Win_Sports_Logo.svg/512px-Win_Sports_Logo.svg.png", link: "https://la14hd.com/vivo/canales.php?stream=winsports" }
+        ]
+    },
+    {
+        region: "MÉXICO", icono: "fa-pepper-hot",
+        canales: [
+            { nombre: "Fox Sports", logo: "https://logodownload.org/wp-content/uploads/2014/10/fox-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=foxsportsmx" },
+            { nombre: "Fox Sports 2", logo: "https://logodownload.org/wp-content/uploads/2014/10/fox-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=foxsports2mx" },
+            { nombre: "Fox Sports 3", logo: "https://logodownload.org/wp-content/uploads/2014/10/fox-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=foxsports3mx" },
+            { nombre: "Fox Sports Premium", logo: "https://logodownload.org/wp-content/uploads/2014/10/fox-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=foxsportspremium" },
+            { nombre: "TUDN", logo: "https://logodownload.org/wp-content/uploads/2019/10/tudn-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=tudn_mx" },
+            { nombre: "ESPN", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espnmx" },
+            { nombre: "ESPN 2", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn2mx" },
+            { nombre: "ESPN 3", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn3mx" },
+            { nombre: "ESPN 4", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn4mx" },
+            { nombre: "Caliente TV", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=calientetv" },
+            { nombre: "Azteca 7", logo: "https://logodownload.org/wp-content/uploads/2019/10/tv-azteca-7-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=azteca7" },
+            { nombre: "Canal 5", logo: "https://logodownload.org/wp-content/uploads/2019/10/canal-5-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=canal5" },
+            { nombre: "TVC Deportes", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=tvc_deportes" },
+            { nombre: "Azteca Deportes", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=azteca_deportes" },
+            { nombre: "Hisports", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=hisports" },
+            { nombre: "Sky Sports LaLiga", logo: "https://logodownload.org/wp-content/uploads/2014/04/sky-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=sky_sports_laliga" },
+            { nombre: "Sky Sports Bundesliga", logo: "https://logodownload.org/wp-content/uploads/2014/04/sky-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=sky_bundesliga_mx" }
         ]
     },
     {
@@ -145,18 +156,92 @@ const canalesDirectorio = [
         canales: [
             { nombre: "Fox Deportes", logo: "https://logodownload.org/wp-content/uploads/2014/10/fox-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=foxdeportes" },
             { nombre: "ESPN Deportes", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espndeportes" },
-            { nombre: "CBS Sports", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=cbs_sports_network" },
+            { nombre: "TUDN", logo: "https://logodownload.org/wp-content/uploads/2019/10/tudn-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=tudn" },
+            { nombre: "Univisión", logo: "https://logodownload.org/wp-content/uploads/2014/10/univision-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=univision" },
+            { nombre: "Fox Sports 1", logo: "https://logodownload.org/wp-content/uploads/2014/10/fox-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=foxsports1_usa" },
+            { nombre: "Fox Sports 2", logo: "https://logodownload.org/wp-content/uploads/2014/10/fox-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=foxsports2_usa" },
+            { nombre: "Universo", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=universo" },
+            { nombre: "BeIN Sports Español", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=beinsportes" },
+            { nombre: "Unimás", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=unimas" },
+            { nombre: "BeIN Sports Xtra Español", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=beinsport_xtra_espanol" },
+            { nombre: "ESPN", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn_usa" },
+            { nombre: "ESPN 2", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn2_usa" },
+            { nombre: "ESPN U", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espnu" },
+            { nombre: "CBS Sports Network", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=cbs_sports_network" },
+            { nombre: "USA Network", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=usanetwork" },
             { nombre: "Telemundo", logo: "https://logodownload.org/wp-content/uploads/2014/10/telemundo-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=telemundo" }
         ]
     },
     {
-        region: "BRASIL & PORTUGAL", icono: "fa-volleyball",
+        region: "CHILE", icono: "fa-mountain",
+        canales: [
+            { nombre: "TNT Sports Chile", logo: "https://logodownload.org/wp-content/uploads/2021/05/tnt-sports-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=eventos13" }
+        ]
+    },
+    {
+        region: "BRASIL", icono: "fa-volleyball",
         canales: [
             { nombre: "Premiere 1", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=premiere1" },
             { nombre: "Premiere 2", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=premiere2" },
+            { nombre: "Premiere 3", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=premiere3" },
+            { nombre: "Premiere 4", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=premiere4" },
+            { nombre: "Premiere 5", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=premiere5" },
+            { nombre: "Premiere 6", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=premiere6" },
+            { nombre: "Premiere 7", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=premiere7" },
+            { nombre: "Premiere 8", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=premiere8" },
             { nombre: "Sportv", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sportv" },
-            { nombre: "Sport TV 1 (PT)", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sporttv1" },
-            { nombre: "Canal 11", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=canal11_pt" }
+            { nombre: "Sportv 2", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sportv2" },
+            { nombre: "Sportv 3", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sportv3" }
+        ]
+    },
+    {
+        region: "PORTUGAL", icono: "fa-ship",
+        canales: [
+            { nombre: "Sport TV 1", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sporttv1" },
+            { nombre: "Sport TV 2", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sporttv2" },
+            { nombre: "Sport TV 3", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sporttv3" },
+            { nombre: "Sport TV 4", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sporttv4" },
+            { nombre: "Sport TV 5", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sporttv5" },
+            { nombre: "Sport TV 6", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=sporttv6" },
+            { nombre: "Canal 11", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=canal11_pt" },
+            { nombre: "Dazn Eleven 1", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=eleven1_pt" },
+            { nombre: "Dazn Eleven 2", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=eleven2_pt" },
+            { nombre: "Dazn Eleven 3", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=eleven3_pt" },
+            { nombre: "Dazn Eleven 4", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=eleven4_pt" },
+            { nombre: "Dazn Eleven 5", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=eleven5_pt" },
+            { nombre: "Dazn Eleven 6", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=eleven6_pt" }
+        ]
+    },
+    {
+        region: "ESPAÑA", icono: "fa-bullhorn",
+        canales: [
+            { nombre: "DAZN 1", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn1" },
+            { nombre: "DAZN 2", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn2" },
+            { nombre: "DAZN 3 (eventos)", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn3" },
+            { nombre: "DAZN 4 (eventos)", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn4" },
+            { nombre: "DAZN LaLiga", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn_laliga" },
+            { nombre: "La 1 TVE", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=la1tve" },
+            { nombre: "Liga de Campeones 1", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=ligadecampeones1" },
+            { nombre: "Liga de Campeones 2", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=ligadecampeones2" },
+            { nombre: "Liga de Campeones 3", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=ligadecampeones3" },
+            { nombre: "M+ LaLiga TV", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=m_laligatv" },
+            { nombre: "LaLigaTV BAR", logo: "https://cdn-icons-png.flaticon.com/512/3256/3256086.png", link: "https://la14hd.com/vivo/canales.php?stream=laligatvbar" }
+        ]
+    },
+    {
+        region: "MUNDO", icono: "fa-globe",
+        canales: [
+            { nombre: "Sky Bundesliga 1", logo: "https://logodownload.org/wp-content/uploads/2014/04/sky-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=sky_bundesliga1" },
+            { nombre: "Sky Bundesliga 2", logo: "https://logodownload.org/wp-content/uploads/2014/04/sky-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=sky_bundesliga2" },
+            { nombre: "Sky Bundesliga 3", logo: "https://logodownload.org/wp-content/uploads/2014/04/sky-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=sky_bundesliga3" },
+            { nombre: "Sky Bundesliga 4", logo: "https://logodownload.org/wp-content/uploads/2014/04/sky-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=sky_bundesliga4" },
+            { nombre: "Sky Bundesliga 5", logo: "https://logodownload.org/wp-content/uploads/2014/04/sky-sports-logo-0.png", link: "https://la14hd.com/vivo/canales.php?stream=sky_bundesliga5" },
+            { nombre: "DAZN 1 DE", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn1_de" },
+            { nombre: "DAZN 2 DE", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=dazn2_de" },
+            { nombre: "ESPN 1 NL", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn1_nl" },
+            { nombre: "ESPN 2 NL", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn2_nl" },
+            { nombre: "ESPN 3 NL", logo: "https://logodownload.org/wp-content/uploads/2014/04/espn-logo-1.png", link: "https://la14hd.com/vivo/canales.php?stream=espn3_nl" },
+            { nombre: "Dazn Eleven Pro 1 BE", logo: "https://logodownload.org/wp-content/uploads/2021/07/dazn-logo.png", link: "https://la14hd.com/vivo/canales.php?stream=elevenpro1_be" }
         ]
     }
 ];
@@ -171,10 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contPartidos && partidosDeHoy.length > 0) {
         let htmlPartidos = '<div class="lista-partidos">';
         partidosDeHoy.forEach(partido => {
-            const iconoBalon = "https://cdn-icons-png.flaticon.com/512/3256/3256086.png";
-            // AQUI ESTÁ LA MAGIA: El botón pasa el link directo a reproductor.html sin salir de la pestaña (target="_self")
-            const urlRepro = `reproductor.html?url=${encodeURIComponent(partido.link)}&nombre=${encodeURIComponent(partido.partido)}&logo=${encodeURIComponent(iconoBalon)}`;
-
+            const urlRepro = `reproductor.html?url=${encodeURIComponent(partido.link)}&nombre=${encodeURIComponent(partido.partido)}`;
             htmlPartidos += `
                 <div class="partido-row">
                     <div class="partido-hora">${partido.hora}</div>
@@ -197,8 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
         canalesDirectorio.forEach(grupo => {
             htmlFinal += `<div class="categoria-region"><h3 class="region-title"><i class="fa-solid ${grupo.icono}"></i> ${grupo.region}</h3><div class="canales-grid-horizontal">`;
             grupo.canales.forEach(canal => {
-                // AQUI TAMBIEN: Todos los canales se abren en tu reproductor.html
-                const urlRepro = `reproductor.html?url=${encodeURIComponent(canal.link)}&nombre=${encodeURIComponent(canal.nombre)}&logo=${encodeURIComponent(canal.logo)}`;
+                const urlRepro = `reproductor.html?url=${encodeURIComponent(canal.link)}&nombre=${encodeURIComponent(canal.nombre)}`;
                 htmlFinal += `
                     <div class="canal-horizontal">
                         <div class="canal-logo"><img src="${canal.logo}" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3256/3256086.png'"></div>
