@@ -3,44 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="referrer" content="no-referrer">
     <title>Agenda en Vivo | ARNOLDSPORTS</title>
+    
     <link rel="icon" href="mi_logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="container header-content">
-            <a href="index.html" class="logo" style="cursor: pointer;">
-                <i class="fa-solid fa-arrow-left" style="margin-right: 8px;"></i> Volver
+    <header style="background: rgba(0, 51, 102, 0.95); border-bottom: 2px solid #5CBFEB; padding: 15px 0;">
+        <div class="container mx-auto px-4 flex justify-between items-center max-w-[1200px]">
+            <a href="index.html" style="font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; color: #FFFFFF; text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-arrow-left" style="color: #5CBFEB;"></i> Volver
             </a>
-            <div class="live-badge" style="background: rgba(92, 191, 235, 0.2); border-color: var(--sc-celeste); color: var(--sc-celeste); box-shadow: none;">
+            <div style="background: rgba(92, 191, 235, 0.2); border: 1px solid #5CBFEB; color: #5CBFEB; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">
                 <i class="fa-solid fa-satellite-dish"></i> AGENDA EN VIVO
             </div>
         </div>
     </header>
 
-    <main class="container" style="padding-top: 40px; padding-bottom: 50px;">
-        
-        <div class="plantilla-header" style="margin-bottom: 20px;">
-            <h2>🔥 Partidos de Hoy</h2>
-            <p style="color: var(--text-dim);">Selecciona el partido para abrirlo en tu reproductor.</p>
-        </div>
-        
-        <div id="partidos-de-hoy" style="margin-bottom: 50px;"></div>
+    <main class="container mx-auto px-4 py-8 max-w-[1200px]">
 
-        <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin-bottom: 40px;">
+        <h1 id="title" style="font-family: 'Oswald', sans-serif; font-size: 2.5rem; color: var(--sc-celeste); text-transform: uppercase; margin-bottom: 10px; margin-left: 20px;">Directorio de Canales HD</h1>
+        <p class="update-text" style="color: var(--text-dim); margin-bottom: 20px; margin-left: 20px; display: flex; align-items: center; gap: 10px;">
+            Transmisiones deportivas en vivo. Usa Brave Browser para bloquear anuncios.
+        </p>
 
-        <div class="plantilla-header" style="margin-bottom: 20px;">
-            <h2>Directorio de Canales</h2>
-            <p style="color: var(--text-dim);">Transmisiones 24/7 ininterrumpidas.</p>
-        </div>
+        <div class="main sm:pl-20 sm:pr-20 md:pl-30 md:pl-30">
 
-        <div id="directorio-canales"></div>
-        
+            <div class="m-6 cardsection" style="background: rgba(0, 51, 102, 0.6); border-radius: 15px; border: 1px solid rgba(92, 191, 235, 0.3); padding-bottom: 20px;">
+                <div class="header-title" style="padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 15px;">
+                    <h3 class="item-game" style="font-family: 'Oswald'; color: #FFD700; font-size: 1.5rem;">PERÚ</h3>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    
+                    <div class="mt-1 mb-1">
+                        <div class="grid grid-cols-3 m-3 shadow shadow-2xl canal items-center h-20" style="background-color: rgba(0,0,0,0.4); border-left: 3px solid #5CBFEB; border-radius: 8px;">
+                            <div class="px-2 sm:px-4">
+                                <span class="status-indicator inlive" style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; background-color: #22c55e;"></span>
+                                <span class="inline-block text-md font-semibold" style="color: #22c55e;">Activo</span>
+                            </div>
+                            <div class="text-center font-bold text-md text-white">Liga1 MAX</div>
+                            <div class="flex justify-end mr-1 sm:mr-10">
+                                <a href="reproductor.html?url=https://la14hd.com/vivo/canales.php?stream=liga1max&nombre=Liga%201%20MAX" target="_self">
+                                    <div class="text-base p-2 text-white rounded-lg shadow-lg w-20 hover:bg-white hover:text-gray-900" style="background-color: #003366; border: 1px solid #5CBFEB; display:flex; justify-content:center;">
+                                        <p>Enlace</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
     </main>
 
     <footer class="site-footer">
