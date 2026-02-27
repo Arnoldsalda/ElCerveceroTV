@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="referrer" content="no-referrer">
     <title>En Vivo | ARNOLDSPORTS</title>
     
     <link rel="icon" href="mi_logo.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* LA MAGIA: ESTE ESCUDO BLOQUEA LOS CLICS EN EL CENTRO DEL VIDEO */
+        .click-shield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80%; /* Tapa el 80% de arriba, deja el 20% de abajo libre para los controles */
+            z-index: 50;
+            background: transparent;
+        }
+    </style>
 </head>
 <body>
 
@@ -29,13 +43,12 @@
                 <span id="canal-titulo">CARGANDO SEÑAL...</span>
             </div>
             
-            <div class="video-frame" id="video-container">
-                <div id="fake-poster" class="fake-poster">
-                    <img id="canal-img-poster" src="https://cdn-icons-png.flaticon.com/512/3256/3256086.png" alt="Poster" onerror="this.src='mi_logo.png'">
-                    <div class="play-button"><i class="fa-solid fa-play"></i></div>
-                </div>
+            <div class="video-frame" id="video-container" style="position: relative;">
                 
-                <iframe id="live-iframe" src="" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen scrolling="no" style="display: none; width: 100%; height: 100%; border: none; background: #000;"></iframe>
+                <div class="click-shield" title="Protección activada: Usa la barra de abajo para darle Play"></div>
+                
+                <iframe id="live-iframe" src="" sandbox="allow-scripts allow-same-origin" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen referrerpolicy="no-referrer" scrolling="no" style="width: 100%; height: 100%; border: none; background: #000;"></iframe>
+            
             </div>
         </section>
 
@@ -73,24 +86,16 @@
 
     <script src="script.js"></script>
     <script>
+        // SCRIPT SIMPLIFICADO: Carga el canal de inmediato
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const stream = urlParams.get('url');
             const nombre = urlParams.get('nombre');
-            const logo = urlParams.get('logo');
 
             if (stream) {
-                if (nombre) document.getElementById('canal-titulo').innerText = nombre.toUpperCase();
-                if (logo && logo !== 'undefined') document.getElementById('canal-img-poster').src = logo;
-
-                const fakePoster = document.getElementById('fake-poster');
-                const liveIframe = document.getElementById('live-iframe');
-
-                fakePoster.addEventListener('click', function() {
-                    fakePoster.style.display = 'none';
-                    liveIframe.src = stream;
-                    liveIframe.style.display = 'block';
-                });
+                if (nombre) document.getElementById('canal-titulo').innerText = nombre.toUpperCase() + " EN VIVO";
+                // Asigna el link directamente al iframe (se muestra al instante)
+                document.getElementById('live-iframe').src = stream;
             }
         });
     </script>
