@@ -42,8 +42,8 @@
             <div style="background: rgba(255, 85, 0, 0.1); border: 1px solid #ff5500; padding: 15px; border-radius: 10px; margin-top: 15px; display: flex; gap: 15px; align-items: center;">
                 <i class="fa-solid fa-shield-halved" style="color: #ff5500; font-size: 2rem;"></i>
                 <div>
-                    <h4 style="margin: 0; color: #ff5500; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase;">Recomendación para ver sin cortes ni anuncios</h4>
-                    <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #ccc;">La señal externa contiene publicidad. Te recomendamos usar el navegador <b>Brave</b> o instalar la extensión <b>uBlock Origin</b> en tu PC para bloquear las ventanas emergentes automáticamente.</p>
+                    <h4 style="margin: 0; color: #ff5500; font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase;">RECOMENDACIÓN PARA VER SIN CORTES</h4>
+                    <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #ccc;">La señal externa contiene publicidad. Te recomendamos usar el navegador <b>Brave</b> o instalar la extensión <b>uBlock Origin</b> para bloquear los anuncios automáticamente.</p>
                 </div>
             </div>
         </section>
@@ -52,7 +52,7 @@
             <h3 class="panel-header" style="justify-content: center; font-size: 1.4rem;">
                 <i class="fa-solid fa-hand-holding-heart"></i> Apoya al Cervecero
             </h3>
-            <p class="donation-desc">Si te gusta la transmisión, apóyanos para mantener los servidores activos.</p>
+            <p class="donation-desc">Si te gusta la transmisión, apóyanos para mantener los servidores activos y sin publicidad externa.</p>
             <div class="donations-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
                 <div class="premium-card card-yape" onclick="copyText('930169320', 'Yape')">
                     <div class="card-left">
@@ -86,12 +86,10 @@
             const urlParams = new URLSearchParams(window.location.search);
             const stream = urlParams.get('url');
             const nombre = urlParams.get('nombre');
-            const logo = urlParams.get('logo');
-
+            
             if (stream) {
-                if (nombre) document.getElementById('canal-titulo').innerText = nombre.toUpperCase() + " EN VIVO";
-                if (logo && logo !== 'undefined') document.getElementById('canal-img-poster').src = logo;
-
+                if (nombre) document.getElementById('canal-titulo').innerText = nombre.toUpperCase();
+                
                 const fakePoster = document.getElementById('fake-poster');
                 const liveIframe = document.getElementById('live-iframe');
 
