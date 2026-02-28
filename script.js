@@ -1,5 +1,5 @@
 // ==========================================
-// 1. LÓGICA DE LA PORTADA FALSA (L1 MAX EN INDEX)
+// 1. LÓGICA DE LA PORTADA FALSA
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
     const fakePoster = document.getElementById('fake-poster');
@@ -98,3 +98,111 @@ function showToast(message) {
         }, 3000);
     }
 }
+
+// ==========================================
+// 4. LÓGICA DEL CHATBOT IA (GEMINI API)
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const chatBubble = document.getElementById('chat-bubble');
+    const chatWindow = document.getElementById('chat-window');
+    const chatClose = document.getElementById('chat-close');
+    const chatInput = document.getElementById('chat-input');
+    const chatSend = document.getElementById('chat-send');
+    const chatMessages = document.getElementById('chat-messages');
+
+    const API_KEY = "AIzaSyAJENhqo_P1IlYEUFazqJaKnbAQ-VaIhiY"; 
+
+    const SYSTEM_PROMPT = `Eres el asistente virtual oficial de ElCerveceroTV, una plataforma gratuita de transmisiones deportivas en vivo. Tu creador es Arnold. Tu tono es amigable, directo, servicial y muy fanático de Sporting Cristal de Perú. Usa frases como "¡Fuerza Cristal!", "Raza Celeste", o "¡Salud, Cervecero!". 
+    
+    Información clave:
+    1. Todos los canales (Liga 1 Max, ESPN, Fox, etc.) están en el menú "Ver Agenda de Canales".
+    2. Si se quejan de publicidad, diles que usen el navegador "Brave" o la extensión "uBlock Origin".
+    3. Si preguntan cómo apoyar o donar, da el Yape/Agora 930 169 320 a nombre de Arnold.
+    4. Responde SIEMPRE de forma breve (máximo 3 líneas).`;
+
+    let historialChat = [];
+
+    if(chatBubble && chatWindow && chatClose) {
+        chatBubble.addEventListener('click', () => {
+            chatWindow.style.display = 'flex';
+            chatBubble.style.display = 'none';
+        });
+
+        chatClose.addEventListener('click', () => {
+            chatWindow.style.display = 'none';
+            chatBubble.style.display = 'flex';
+        });
+    }
+
+    if(chatSend && chatInput) {
+        chatSend.addEventListener('click', enviarMensaje);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') enviarMensaje();
+        });
+    }
+
+    async function enviarMensaje() {
+        const textoUsuario = chatInput.value.trim();
+        if (!textoUsuario) return;
+
+        agregarMensaje(textoUsuario, 'msg-user');
+        chatInput.value = '';
+
+        historialChat.push({ role: "user", parts: [{ text: textoUsuario }] });
+
+        const escribiendoId = agregarMensaje("Pensando...", 'msg-bot', true);
+
+        try {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+            
+            const payload = {
+                systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+                contents: historialChat
+            };
+
+            const respuesta = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await respuesta.json();
+            
+            const msgPensando = document.getElementById(escribiendoId);
+            if(msgPensando) msgPensando.remove();
+
+            if (data.candidates && data.candidates[0]) {
+                const textoBot = data.candidates[0].content.parts[0].text;
+                agregarMensaje(textoBot, 'msg-bot');
+                historialChat.push({ role: "model", parts: [{ text: textoBot }] });
+            } else {
+                agregarMensaje("El servidor está muy lleno, Cervecero. Intenta de nuevo. 🍺", 'msg-bot');
+            }
+
+        } catch (error) {
+            const msgPensando = document.getElementById(escribiendoId);
+            if(msgPensando) msgPensando.remove();
+            
+            agregarMensaje("Error de conexión. Revisa tu internet.", 'msg-bot');
+            console.error("Error API Gemini:", error);
+        }
+    }
+
+    function agregarMensaje(texto, clase, esTemporal = false) {
+        if(!chatMessages) return;
+        
+        const div = document.createElement('div');
+        div.className = `msg ${clase}`;
+        div.innerText = texto;
+        
+        const idTemporal = 'msg-' + Date.now();
+        if (esTemporal) {
+            div.id = idTemporal;
+            div.classList.add('escribiendo');
+        }
+
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return idTemporal;
+    }
+});
