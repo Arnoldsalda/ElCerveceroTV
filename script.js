@@ -1,5 +1,5 @@
 // ==========================================
-// 1. LÓGICA DE LA PORTADA FALSA
+// 1. LÓGICA DE LA PORTADA FALSA (REPRODUCTOR)
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
     const fakePoster = document.getElementById('fake-poster');
@@ -19,8 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ==========================================
 const calendarioPartidos = [
     { rival: "S. Huancayo", inicio: new Date("February 28, 2026 15:00:00").getTime(), fin: new Date("February 28, 2026 17:00:00").getTime() },
-    { rival: "A. Atletico", inicio: new Date("March 02, 2026 15:30:00").getTime(), fin: new Date("March 02, 2026 17:30:00").getTime() },
-    { rival: "S. Boys", inicio: new Date("March 15, 2026 20:00:00").getTime(), fin: new Date("March 15, 2026 22:00:00").getTime() }
+    { rival: "A. Atletico", inicio: new Date("March 02, 2026 15:30:00").getTime(), fin: new Date("March 02, 2026 17:30:00").getTime() }
 ];
 
 function actualizarContador() {
@@ -87,20 +86,16 @@ function showToast(message) {
     const toast = document.getElementById('premiumToast') || document.getElementById('notification');
     if(toast) {
         const msgEl = document.getElementById('toastMessage');
-        if(msgEl) {
-            msgEl.innerText = message;
-        } else {
-            toast.innerText = message; 
-        }
+        if(msgEl) msgEl.innerText = message;
+        else toast.innerText = message; 
+        
         toast.classList.add('show');
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3000);
+        setTimeout(() => toast.classList.remove('show'), 3000);
     }
 }
 
 // ==========================================
-// 4. LÓGICA DEL CHATBOT IA (GEMINI API)
+// 4. LÓGICA DEL CHATBOT IA (VIA NETLIFY)
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     const chatBubble = document.getElementById('chat-bubble');
@@ -110,15 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatSend = document.getElementById('chat-send');
     const chatMessages = document.getElementById('chat-messages');
 
-
-    const SYSTEM_PROMPT = `Eres el asistente virtual oficial de ElCerveceroTV, una plataforma gratuita de transmisiones deportivas en vivo. Tu creador es Arnold. Tu tono es amigable, directo, servicial y muy fanático de Sporting Cristal de Perú. Usa frases como "¡Fuerza Cristal!", "Raza Celeste", o "¡Salud, Cervecero!". 
-    
-    Información clave:
-    1. Todos los canales (Liga 1 Max, ESPN, Fox, etc.) están en el menú "Ver Agenda de Canales".
-    2. Si se quejan de publicidad, diles que usen el navegador "Brave" o la extensión "uBlock Origin".
-    3. Si preguntan cómo apoyar o donar, da el Yape/Agora 930 169 320 a nombre de Arnold.
-    4. Responde SIEMPRE de forma breve (máximo 3 líneas).`;
-
     let historialChat = [];
 
     if(chatBubble && chatWindow && chatClose) {
@@ -126,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chatWindow.style.display = 'flex';
             chatBubble.style.display = 'none';
         });
-
         chatClose.addEventListener('click', () => {
             chatWindow.style.display = 'none';
             chatBubble.style.display = 'flex';
@@ -147,49 +132,40 @@ document.addEventListener('DOMContentLoaded', () => {
         agregarMensaje(textoUsuario, 'msg-user');
         chatInput.value = '';
 
-        historialChat.push({ role: "user", parts: [{ text: textoUsuario }] });
-
         const escribiendoId = agregarMensaje("Pensando...", 'msg-bot', true);
 
         try {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
-            
-            const payload = {
-                systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-                contents: historialChat
-            };
-
-            const respuesta = await fetch(url, {
+            // Llamamos a la función protegida en Netlify
+            const response = await fetch('/.netlify/functions/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({ prompt: textoUsuario, historial: historialChat })
             });
 
-            const data = await respuesta.json();
+            const data = await response.json();
             
             const msgPensando = document.getElementById(escribiendoId);
             if(msgPensando) msgPensando.remove();
 
-            if (data.candidates && data.candidates[0]) {
-                const textoBot = data.candidates[0].content.parts[0].text;
-                agregarMensaje(textoBot, 'msg-bot');
-                historialChat.push({ role: "model", parts: [{ text: textoBot }] });
-            } else {
-                agregarMensaje("El servidor está muy lleno, Cervecero. Intenta de nuevo. 🍺", 'msg-bot');
-            }
+            if (!response.ok) throw new Error(data.error || "Error del servidor");
+
+            agregarMensaje(data.respuesta, 'msg-bot');
+            
+            // Actualizar historial local
+            historialChat.push({ role: "user", parts: [{ text: textoUsuario }] });
+            historialChat.push({ role: "model", parts: [{ text: data.respuesta }] });
 
         } catch (error) {
             const msgPensando = document.getElementById(escribiendoId);
             if(msgPensando) msgPensando.remove();
             
-            agregarMensaje("Error de conexión. Revisa tu internet.", 'msg-bot');
-            console.error("Error API Gemini:", error);
+            agregarMensaje("Error de conexión con el servidor. Intenta de nuevo. 🍺", 'msg-bot');
+            console.error("Error Fetch:", error);
         }
     }
 
     function agregarMensaje(texto, clase, esTemporal = false) {
         if(!chatMessages) return;
-        
         const div = document.createElement('div');
         div.className = `msg ${clase}`;
         div.innerText = texto;
@@ -205,4 +181,3 @@ document.addEventListener('DOMContentLoaded', () => {
         return idTemporal;
     }
 });
-
