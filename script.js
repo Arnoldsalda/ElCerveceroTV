@@ -110,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatSend = document.getElementById('chat-send');
     const chatMessages = document.getElementById('chat-messages');
 
-    const API_KEY = "AIzaSyAJENhqo_P1IlYEUFazqJaKnbAQ-VaIhiY"; 
 
     const SYSTEM_PROMPT = `Eres el asistente virtual oficial de ElCerveceroTV, una plataforma gratuita de transmisiones deportivas en vivo. Tu creador es Arnold. Tu tono es amigable, directo, servicial y muy fanático de Sporting Cristal de Perú. Usa frases como "¡Fuerza Cristal!", "Raza Celeste", o "¡Salud, Cervecero!". 
     
@@ -206,3 +205,4 @@ document.addEventListener('DOMContentLoaded', () => {
         return idTemporal;
     }
 });
+
